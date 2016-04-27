@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package Project_7;
 import java.io.*;
 import java.util.*;
@@ -41,23 +39,31 @@ char C;
 		C = Command.charAt(0);				
 		switch (C) {
 		case 'e':  
-addItem();  break;	
+                        addItem();  
+                        break;	
 		case 'f':
 			code = stdin.next();
 			stdin.nextLine();
 			i = index(code);
 			if (i >= 0) displayEntry(entryList [i]);
-			else        System.out.println("**No entry with code " + code); break;		
+			else        System.out.println("**No entry with code "
+                                + code); 
+                        break;		
 		case 'l':
-			listAllItems(); break;		
+			listAllItems(); 
+                        break;		
 		case 's':
-			sortList(); break;		
+			sortList(); 
+                        break;		
 		case 'q':
 			CopyInventoryToFile("inventory.txt");
-			System.out.println("Quitting the application. All the entries are "
-					+ "stored in the file inventory.txt"); break;		
+			System.out.println("Quitting the application. "
+                                + "All the entries are stored in the file "
+                                + "inventory.txt"); 
+                        break;		
 		default:
-			System.out.println("Invalid command. Please enter the command again!!!");				}
+			System.out.println("Invalid command. "
+                                + "Please enter the command again!!!");				}
 	}
 
     
