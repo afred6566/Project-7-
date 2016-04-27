@@ -1,0 +1,2 @@
+ Soda	20	none
+ Milk	10	Chilled storage
