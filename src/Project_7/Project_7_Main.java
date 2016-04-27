@@ -132,9 +132,9 @@ public static int index(String Key) {
 }
 
 public static void displayEntry(Entry item) {
-	System.out.println("--"+ item.name+"\t"+
-	   		   item.quantity+"\t"+
-	   		   item.note);
+	System.out.println("--"+ item.name+"\n"+
+	   		   "--" + item.quantity+"\n"+
+	   		   "--" + item.note);
 }
 
 public static void listAllItems() {
