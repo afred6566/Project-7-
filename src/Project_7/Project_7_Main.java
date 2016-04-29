@@ -80,7 +80,26 @@ public class Project_7_Main extends Application {
 			System.out.println("Quitting the application. "
                                 + "All the entries are stored in the file "
                                 + "inventory.txt"); 
-                        break;		
+                        break;
+                case 'd':
+                        String todelete = stdin.next();
+                        boolean deleteDone = false;
+                        for(int j = 0; j < num_entries; j++){
+                            if(deleteDone == false){
+                                if(entryList[j].equals(todelete)){
+                                    deleteDone = true;
+                                }
+                            }else{
+                                entryList[j - 1] = entryList[j];
+                            }                            
+                        }
+                        //This checks if there is anything to delete
+                        if(deleteDone == true){
+                            num_entries--;
+                        }else{
+                            System.out.println("Could not find that in the list of entries. ");
+                        }
+                        break;
 		default:
 			System.out.println("Invalid command. "
                                 + "Please enter the command again!!!");				}
