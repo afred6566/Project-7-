@@ -200,12 +200,18 @@ public class VisualInterface {
             if (debug) {
                 System.out.println("clicked");
             }
+            entryList[num_entries] = new Entry();
             entryList[num_entries].name = name.getText();
             entryList[num_entries].quantity = quantity.getText();
             entryList[num_entries].note = notes.getText();
             if (debug) {
                 System.out.println(entryList[num_entries].name + entryList[num_entries].quantity + entryList[num_entries].note);
             }
+            num_entries++;
+            
+            
+            enterPane().getChildren().clear();
+            pane.getChildren().add(enterPane());
         });
         btnCancel.setOnAction((ActionEvent e) -> {
             if (debug) {
@@ -378,6 +384,8 @@ public class VisualInterface {
         btnEnter.setMinSize(60, 40);
         Button btnCancel = new Button("Cancel");
         btnCancel.setMinSize(60, 40);
+        Button btnSort = new Button("Sort");
+        btnSort.setMinSize(60, 40);
 
         Label paneLabel = new Label("All Items");
         paneLabel.setMinWidth(300);
@@ -394,8 +402,8 @@ public class VisualInterface {
         allResults.setItems(results);
 
         HBox buttons = getHBox();
-        buttons.setTranslateX(350);
-        buttons.getChildren().addAll(btnEnter, btnCancel);
+        buttons.setTranslateX(300);
+        buttons.getChildren().addAll(btnSort, btnEnter, btnCancel);
 
         vBoxL.getChildren().addAll(label, allResults, buttons);
         vBoxL.setTranslateX(200);
@@ -403,7 +411,13 @@ public class VisualInterface {
         allResults.setOnMouseClicked((MouseEvent m) -> {
             editItem = allResults.getSelectionModel().getSelectedItem().toString();
         });
-        
+        btnSort.setOnAction((ActionEvent e) -> {
+            if (debug)  System.out.println("clicked");
+            Project_7_Main.sortList();
+            
+            pane.getChildren().remove(vBoxL);            
+            pane.getChildren().add(listPane());
+        });
         btnEnter.setOnAction((ActionEvent e) -> {
             if (debug) {
                 System.out.println("clicked");

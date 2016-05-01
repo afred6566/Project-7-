@@ -29,8 +29,8 @@ class Entry {
 
 public class Project_7_Main extends Application {
 
-    public static Entry[] entryList;
-    public static int num_entries;
+    public static Entry[] entryList = new Entry[200];
+    public static int num_entries = 0;
     public static Scanner stdin = new Scanner(System.in);
     public static BorderPane pane = new BorderPane();
     public static boolean debug = true;
@@ -65,84 +65,8 @@ public class Project_7_Main extends Application {
     }
 
     public static void main(String args[]) throws Exception {
-        
-        entryList = new Entry[200];
-        num_entries = 0;
-        
         readInventory("inventory.txt");
-        
         launch(args);
-        int i;
-        char C;
-        String code, Command;
-
-        
-        Command = null;
-        C = ' ';
-        
-
-        System.out.println("Codes are entered as 1 to 8 characters.\nUse"
-                + " \"e\" for enter,"
-                + " \"f\" for find,"
-                + " \"l\" for listing all the entries,"
-                + " \"q\" to quit.");
-
-        while (C != 'q') {
-            System.out.print("Command: ");
-            Command = stdin.next();
-            C = Command.charAt(0);
-            switch (C) {
-                case 'e':
-                    addItem();
-                    break;
-                case 'f':
-                    code = stdin.next();
-                    stdin.nextLine();
-                    i = index(code);
-                    if (i >= 0) {
-                        displayEntry(entryList[i]);
-                    } else {
-                        System.out.println("**No entry with code "
-                                + code);
-                    }
-                    break;
-                case 'l':
-                    listAllItems();
-                    break;
-                case 's':
-                    sortList();
-                    break;
-                case 'q':
-                    CopyInventoryToFile("inventory.txt");
-                    System.out.println("Quitting the application. "
-                            + "All the entries are stored in the file "
-                            + "inventory.txt");
-                    break;
-                case 'd':
-                    String todelete = stdin.next();
-                    boolean deleteDone = false;
-                    for (int j = 0; j < num_entries; j++) {
-                        if (deleteDone == false) {
-                            if (entryList[j].equals(todelete)) {
-                                deleteDone = true;
-                            }
-                        } else {
-                            entryList[j - 1] = entryList[j];
-                        }
-                    }
-                    //This checks if there is anything to delete
-                    if (deleteDone == true) {
-                        num_entries--;
-                    } else {
-                        System.out.println("Could not find that in the list of entries. ");
-                    }
-                    break;
-                default:
-                    System.out.println("Invalid command. "
-                            + "Please enter the command again!!!");
-            }
-        }
-
     }
 
     public static void readInventory(String FileName) throws Exception {
@@ -158,19 +82,6 @@ public class Project_7_Main extends Application {
             num_entries++;
         }
         S.close();
-    }
-
-    public static void addItem() {
-
-        /*entryList [num_entries] = new Entry();
-            entryList[num_entries].name = name.get();
-        
-    
-            entryList [num_entries].quantity = quantity.get();
-        
-            entryList [num_entries].note = notes.get();
-        
-    num_entries++;*/
     }
 
     public static void enterName(String item) {
