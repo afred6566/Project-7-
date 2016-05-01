@@ -9,8 +9,14 @@ import java.util.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import Project_7.VisualInterface;
+import static Project_7.VisualInterface.enterPane;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 class Entry {
 	public String name, quantity, note;
@@ -20,19 +26,26 @@ public class Project_7_Main extends Application {
     public static Entry[]  entryList;
     public static int     num_entries;
     public static Scanner  stdin = new Scanner(System.in);
+    public static BorderPane pane = new BorderPane();
+    public static boolean debug = true;
 
     @Override
     public void start(Stage primaryStage) {
-        BorderPane pane = new BorderPane();
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(pane, 800, 600);
         primaryStage.setTitle("Inventory Managment");
-        
+        pane.setStyle("-fx-background-color: #85CD66;"
+        + "-fx-border-width: 5;"
+        + "-fx-insets: 10;"
+        + "-fx-border-radius: 5;"
+        + "-fx-border-color: green;");
         //Place nodes here
         pane.setLeft(VisualInterface.getVBox());
         
         //Create a scene and place it in stage
         primaryStage.setScene(scene); //placing scene in stage
         primaryStage.show();
+        
+        
         
     }
     public static void main(String args[]) throws Exception{
@@ -124,21 +137,29 @@ public static void readInventory(String FileName) throws Exception {
 }
 
 public static void addItem() {
-	String name = stdin.next();
-	String quantity;
-	stdin.nextLine();
-	entryList [num_entries] 	  = new Entry();
-	entryList [num_entries].name = name;
-	
-	System.out.print("Enter Quantity: ");
-	quantity = stdin.nextLine();
-	entryList [num_entries].quantity = quantity;
-		
-	System.out.print("Enter Notes: ");
-	entryList [num_entries].note = stdin.nextLine();
-	num_entries++;
+  
+    /*entryList [num_entries] = new Entry();
+            entryList[num_entries].name = name.get();
+        
+    
+            entryList [num_entries].quantity = quantity.get();
+        
+            entryList [num_entries].note = notes.get();
+        
+    num_entries++;*/
 }
-
+public static void enterName (String item) {
+    String itemName = "Item";
+    itemName = item;    
+}
+public static void enterQuantity (String number) {
+    String quantity = "Quantity";
+    quantity = number;    
+}
+public static void enterNotes (String notes) {
+    String itemNotes = "Notes";
+    itemNotes = notes;
+}
 	 
 public static int index(String Key) {
 // Function to get the index of a key from an array
