@@ -1,6 +1,6 @@
-Soda	20			none
-Milk	10			Chilled storage
-Chips	15	Easily Crushed
-Eggs	10			delicate
-apple	15			aledihuyvgf
-aprico	14			yummy
+Soda	20				none
+Milk	10				Chilled storage
+Chips	15		Easily Crushed
+Eggs	10				delicate
+apple	15				aledihuyvgf
+aprico	14				yummy

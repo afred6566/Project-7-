@@ -457,10 +457,21 @@ public class VisualInterface {
         items.setMinWidth(395);
         items.setTranslateX(15);
         items.setMinHeight(300);
+        
+        results.clear();
+        items.setItems(results);
 
         vBoxD.getChildren().addAll(label, deleteItem, items, buttons);
         vBoxD.setTranslateX(200);
-
+        
+        delete.setOnKeyReleased((KeyEvent event) -> {
+            results.clear();
+            Project_7_Main.find(delete.getText());
+            if (debug) {
+                System.out.println(results);
+            }
+            items.setItems(results);
+        });
         btnDelete.setOnAction((ActionEvent e) -> {
             if (debug) {
                 System.out.println("clicked");
