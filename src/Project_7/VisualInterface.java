@@ -50,7 +50,7 @@ public class VisualInterface {
 
     public static ObservableList<String> results = FXCollections.observableArrayList();
     public static Label findName = new Label();
-    private static String editItem;
+    public static String editItem;
     
 
     public static VBox getVBox() {
@@ -380,7 +380,7 @@ public class VisualInterface {
         vBoxL.setPrefSize(500, 350);
         vBoxL.setStyle("-fx-background: gold");
 
-        Button btnEnter = new Button("Enter");
+        Button btnEnter = new Button("Edit");
         btnEnter.setMinSize(60, 40);
         Button btnCancel = new Button("Cancel");
         btnCancel.setMinSize(60, 40);
@@ -478,9 +478,13 @@ public class VisualInterface {
         vBoxD.getChildren().addAll(label, deleteItem, items, buttons);
         vBoxD.setTranslateX(200);
         
+        items.setOnMouseClicked((MouseEvent m) -> {
+            editItem = items.getSelectionModel().getSelectedItem().toString();
+        });
+        
         delete.setOnKeyReleased((KeyEvent event) -> {
             results.clear();
-            Project_7_Main.find(delete.getText());
+            Project_7_Main.find(delete.getText());            
             if (debug) {
                 System.out.println(results);
             }
@@ -490,7 +494,8 @@ public class VisualInterface {
             if (debug) {
                 System.out.println("clicked");
             }
-            //Delete function written here
+            Project_7_Main.delete(delete.getText());
+            items.setItems(results);
         });
         btnCancel.setOnAction((ActionEvent e) -> {
             if (debug) {

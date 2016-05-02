@@ -10,6 +10,7 @@ import java.util.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import Project_7.VisualInterface;
+import static Project_7.VisualInterface.editItem;
 import static Project_7.VisualInterface.enterPane;
 import static Project_7.VisualInterface.results;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.WindowEvent;
 import javafx.util.Pair;
+
 
 class Entry {
 
@@ -134,9 +136,12 @@ public class Project_7_Main extends Application {
     }
     public static void delete(String name){        
         for(int i = 0; i < num_entries; i++) {
-             if(name.toLowerCase().contains(entryList[i].name) || entryList[i].name.toLowerCase().contains(name)) {
-                 results.remove(entryList[i]);
+             if(entryList[i].name.equals(editItem)) {
+                 for(int j = i; j < num_entries; j++){
+                 entryList[j] = entryList[j + 1];
+             }
                  num_entries--;
+                 results.remove(editItem);
              }           
             
         }
