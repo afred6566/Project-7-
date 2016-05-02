@@ -174,4 +174,23 @@ public class Project_7_Main extends Application {
                     + "\t" + entryList[i].note);
         }
     }
+        public static boolean isInteger(String quantity) {
+        Boolean digit = true;
+        int yourNumber;
+
+        for (int i = 0; i < num_entries; i++) {
+            try {
+                yourNumber = Integer.parseInt(quantity);
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Invalid input. Quantity must be an integer. Quantity set to 0 by default.");
+                digit = false;
+            }
+        }
+        if (debug) {
+            System.out.println(digit);
+        }
+        return digit;
+    }
 }
