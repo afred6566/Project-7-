@@ -490,7 +490,7 @@ public class VisualInterface {
             if (debug) {
                 System.out.println("clicked");
             }
-            //delete function when written
+            //Delete function written here
         });
         btnCancel.setOnAction((ActionEvent e) -> {
             if (debug) {

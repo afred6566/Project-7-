@@ -132,6 +132,15 @@ public class Project_7_Main extends Application {
             }
         }
     }
+    public static void delete(String name){        
+        for(int i = 0; i < num_entries; i++) {
+             if(name.toLowerCase().contains(entryList[i].name) || entryList[i].name.toLowerCase().contains(name)) {
+                 results.remove(entryList[i]);
+                 num_entries--;
+             }           
+            
+        }
+    }
 
     public static void sortList() {
         int i;
